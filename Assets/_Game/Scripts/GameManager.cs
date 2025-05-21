@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        count = PlayerPrefs.GetFloat("Count", 0);
         Stripes.SetActive(false);
         UpdateUI();
     }
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
 
     private void UpdateUI()
     {
+        PlayerPrefs.SetFloat("Count", count);
         _countText.text = Mathf.RoundToInt(count).ToString();
         _incomeText.text = _lastIncomeValue.ToString() + "/s";
 
