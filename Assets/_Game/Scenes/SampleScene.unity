@@ -2771,7 +2771,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4800075238956686911, guid: af20d17c9d1bf2542bd5c023b08693ed, type: 3}
       propertyPath: cookiesPerUpgrade
-      value: 300
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
