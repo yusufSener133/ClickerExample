@@ -6,9 +6,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text _countText;
     [SerializeField] private TMP_Text _incomeText;
     [SerializeField] private StoreUpdate[] storeUpdates;
+    [SerializeField] private RotateAround rotateAround;
     [SerializeField] private int _updatePerSecond = 5;
 
-    public GameObject Stripes;
+    [SerializeField] private GameObject _stripes;
 
     [HideInInspector] public float count = 0;
     private float _nextTimeCheck = 1;
@@ -17,7 +18,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         count = PlayerPrefs.GetFloat("Count", 0);
-        Stripes.SetActive(false);
+        _stripes.SetActive(false);
         UpdateUI();
     }
     private void Update()
@@ -27,8 +28,15 @@ public class GameManager : MonoBehaviour
             IdleCalculate();
             _nextTimeCheck = Time.timeSinceLevelLoad + (1f / _updatePerSecond);
         }
-        if (_lastIncomeValue > 100f)
-            Stripes.SetActive(true);
+        if (_lastIncomeValue > 20f)
+        {
+            _stripes.SetActive(true);
+            for (int i = 1; i < 10; i++)
+            {
+                if (_lastIncomeValue > 50f * i)
+                    rotateAround.Speed = i;
+            }
+        }
 
     }
     private void IdleCalculate()
